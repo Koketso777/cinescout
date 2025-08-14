@@ -4,10 +4,16 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+# required for Pages actions
 permissions:
   contents: read
   pages: write
   id-token: write
+
+# optional but recommended so only one deploy runs at a time
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -15,10 +21,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: { node-version: '20' }
+        with:
+          node-version: 20
       - run: npm ci
       - run: npm run build
-      - uses: actions/upload-pages-artifact@v3
+      # configure Pages (recommended before uploading)
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      # upload the built site from Vite's dist/
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
@@ -28,7 +40,5 @@ jobs:
     environment:
       name: github-pages
     steps:
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-      - id: deployment
+      - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
