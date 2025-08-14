@@ -1,0 +1,27 @@
+:root { --bg:#0b0f19; --card:#11182a; --ink:#e6edf3; --muted:#9fb0c7; --accent:#5ac8fa; }
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#0b0f19,#0e1422);color:var(--ink);font:16px/1.5 system-ui,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:24px}
+h1{margin:0 0 8px}
+header p{margin:0 0 16px;color:var(--muted)}
+.bar{display:flex;gap:8px}
+.bar input{flex:1;padding:12px 14px;border-radius:12px;border:1px solid #24314d;background:#0c1322;color:var(--ink)}
+.bar button{padding:12px 16px;border:0;background:var(--accent);color:#031120;border-radius:12px;font-weight:700;cursor:pointer}
+.grid{margin-top:20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid #1a2340;border-radius:16px;overflow:hidden;cursor:pointer;transition:transform .1s}
+.card:hover{transform:translateY(-2px)}
+.poster{width:100%;display:block;aspect-ratio:2/3;object-fit:cover;background:#0c1322}
+.poster.placeholder{display:flex;align-items:center;justify-content:center;color:var(--muted)}
+.meta{display:flex;gap:8px;align-items:center;padding:8px 12px}
+.meta h3{margin:0;flex:1;font-size:16px}
+.year,.rating{color:var(--muted);font-size:12px}
+.overview{padding:0 12px 12px;color:#c7d3e6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.pager{display:flex;gap:12px;align-items:center;justify-content:center;margin:24px 0}
+.pager button{padding:8px 12px;border-radius:10px;border:1px solid #2a3860;background:#0e1422;color:var(--ink);cursor:pointer}
+.drawer{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(2px);display:flex;align-items:center;justify-content:center;padding:24px}
+.panel{max-width:900px;width:100%;background:#0f1628;border:1px solid #263152;border-radius:20px;padding:16px;position:relative}
+.close{position:absolute;top:8px;right:8px;border:0;background:#203152;color:#fff;border-radius:50%;width:32px;height:32px;cursor:pointer}
+.flex{display:grid;grid-template-columns:260px 1fr;gap:16px}
+footer{margin:32px 0;color:var(--muted);font-size:13px;text-align:center}
+@media (max-width:760px){.flex{grid-template-columns:1fr}}
+.error{margin-top:10px;background:#401a1a;border:1px solid #6b2b2b;color:#ffd4d4;padding:8px 10px;border-radius:10px}
